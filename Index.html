@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muslim Traders | 227 Del Monte - Norzagaray Rd Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="logo">Muslim Traders</div>
+    <nav id="nav">
+      <button class="nav-btn active" onclick="goToSlide(0)">Home</button>
+      <button class="nav-btn" onclick="goToSlide(1)">Highlights</button>
+      <button class="nav-btn" onclick="goToSlide(2)">Offerings</button>
+      <button class="nav-btn" onclick="goToSlide(3)">Location</button>
+      <button class="nav-btn" onclick="goToSlide(4)">Contact Us</button>
+    </nav>
+  </header>
+
+  <!-- Slider Viewport -->
+  <div class="slider-viewport" id="viewport">
+    
+    <!-- Floating Slider Controls -->
+    <button class="arrow-btn prev-btn" id="prevBtn" onclick="prevSlide()" aria-label="Previous Slide">&#10094;</button>
+    <button class="arrow-btn next-btn" id="nextBtn" onclick="nextSlide()" aria-label="Next Slide">&#10095;</button>
+
+    <div class="slider-track" id="track">
+      
+      <!-- Slide 1: Muslim Traders Home -->
+      <section class="slide-section" id="home">
+        <div class="hero-content">
+          <span class="badge">📍 SJDM, Bulacan</span>
+          <h1>Muslim Traders</h1>
+          <p class="hero-sub">227 Del Monte - Norzagaray Rd Market</p>
+          <p>Your complete community hub for fresh farm produce, daily household essentials, halal goods, local delicacies, and phone repair services.</p>
+          <div class="hero-actions">
+            <button class="btn primary-btn" onclick="goToSlide(3)">View Location Map</button>
+            <button class="btn secondary-btn" onclick="goToSlide(4)">Send Inquiry</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: Highlights & Stats -->
+      <section class="slide-section">
+        <div class="section-container">
+          <h2>Why Visit Muslim Traders?</h2>
+          <p class="subtitle">Serving San Jose del Monte with trusted vendors and daily fresh inventory.</p>
+          
+          <div class="stats-bar">
+            <div class="stat-item">
+              <strong>50+</strong>
+              <span>Active Vendors</span>
+            </div>
+            <div class="stat-item">
+              <strong>Daily</strong>
+              <span>Fresh Deliveries</span>
+            </div>
+            <div class="stat-item">
+              <strong>5 AM - 8 PM</strong>
+              <span>Operating Hours</span>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <div class="card-icon">🥦</div>
+              <h3>Farm Fresh Produce</h3>
+              <p>Directly sourced fruits and vegetables brought in daily from regional farms.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">🥩</div>
+              <h3>Fresh Meats & Goods</h3>
+              <p>Quality cuts, fish, and general grocery supplies at competitive market prices.</p>
+            </div>
+            <div class="card">
+              <div class="card-icon">📱</div>
+              <h3>Phone Repair Stall</h3>
+              <p>On-site smartphone repair, screen replacements, battery fixes, and tech accessories.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Offerings -->
+      <section class="slide-section">
+        <div class="section-container">
+          <h2>Market Offerings & Vendors</h2>
+          <p class="subtitle">Explore everything available along the Del Monte - Norzagaray commercial spot.</p>
+          <div class="vendor-grid">
+            <div class="vendor-card">
+              <span class="v-icon">📱</span>
+              <h4>Phone Repair Stall</h4>
+              <p>Fast hardware repairs, LCD fixes, unlocking, chargers, and phone cases.</p>
+            </div>
+            <div class="vendor-card">
+              <span class="v-icon">🥬</span>
+              <h4>Fresh Vegetables & Herbs</h4>
+              <p>Leafy greens, spices, and cooking staples harvested daily.</p>
+            </div>
+            <div class="vendor-card">
+              <span class="v-icon">🍎</span>
+              <h4>Local & Imported Fruits</h4>
+              <p>Seasonal local fruits and essential imported fruit varieties.</p>
+            </div>
+            <div class="vendor-card">
+              <span class="v-icon">🍗</span>
+              <h4>Meat & Poultry</h4>
+              <p>Inspected fresh meats and everyday kitchen options.</p>
+            </div>
+            <div class="vendor-card">
+              <span class="v-icon">🐟</span>
+              <h4>Seafood & Dried Fish</h4>
+              <p>Fresh catches and traditional dried fish favorites.</p>
+            </div>
+            <div class="vendor-card">
+              <span class="v-icon">🍚</span>
+              <h4>Rice & Groceries</h4>
+              <p>Wholesale rice, seasonings, canned goods, and household needs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Location & Map -->
+      <section class="slide-section">
+        <div class="section-container">
+          <h2>Location & Map</h2>
+          <div class="location-container">
+            <div class="info-box">
+              <div class="info-item">
+                <strong>Business Name</strong>
+                <p>Muslim Traders</p>
+              </div>
+              <div class="info-item">
+                <strong>Exact Address</strong>
+                <p>227 Del Monte - Norzagaray Rd, San Jose del Monte, Bulacan</p>
+              </div>
+              <div class="info-item">
+                <strong>Operating Schedule</strong>
+                <p>Monday – Sunday: 5:00 AM – 8:00 PM</p>
+              </div>
+              <div class="info-item">
+                <strong>Direct Contact</strong>
+                <p>📞 097434462 | ✉️ azuleermenu@gmail.com</p>
+              </div>
+              <a href="https://maps.app.goo.gl/zTDA1ME7iVNo7U3e9" target="_blank" rel="noopener noreferrer" class="btn map-link-btn">
+                🗺️ Open Pin Location in Google Maps App
+              </a>
+            </div>
+            
+            <div class="map-wrapper">
+              <iframe 
+                src="https://maps.google.com/maps?q=Muslim%20Traders,%20227%20Del%20Monte%20-%20Norzagaray%20Rd,%20San%20Jose%20del%20Monte,%20Bulacan&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Direct Email Contact Form -->
+      <section class="slide-section">
+        <div class="section-container">
+          <h2>Send an Inquiry</h2>
+          <p class="subtitle">Direct inquiries sent straight to <strong>azuleermenu@gmail.com</strong>.</p>
+          
+          <div class="contact-container">
+            <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Your Full Name</label>
+                  <input type="text" id="fullName" name="name" placeholder="e.g. Maria Santos" required>
+                </div>
+                <div class="form-group">
+                  <label for="userEmail">Your Email Address</label>
+                  <input type="email" id="userEmail" name="email" placeholder="e.g. maria@gmail.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="userPhone">Your Phone Number</label>
+                  <input type="tel" id="userPhone" name="phone" placeholder="e.g. 097434462" required>
+                </div>
+                <div class="form-group">
+                  <label for="inquiryType">Inquiry Subject</label>
+                  <select id="inquiryType" name="inquiry_type">
+                    <option value="Phone Repair / Tech Service">Phone Repair / Tech Service</option>
+                    <option value="Stall Rental / Vendor Space">Stall Rental / Vendor Space</option>
+                    <option value="Wholesale / Bulk Orders">Wholesale / Bulk Orders</option>
+                    <option value="General Question">General Question</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="3" placeholder="Describe your inquiry or phone repair needs..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn primary-btn submit-btn" id="submitBtn">
+                <span id="btnText">Send Email Inquiry</span>
+              </button>
+            </form>
+
+            <div id="formStatus" class="form-status"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="dots-wrapper">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+      <span class="dot" onclick="goToSlide(3)"></span>
+      <span class="dot" onclick="goToSlide(4)"></span>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
