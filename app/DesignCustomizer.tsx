@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Palette, X, RotateCcw, Send, ChevronUp } from "lucide-react";
+import { Palette, X, RotateCcw, Send } from "lucide-react";
 
 const palettes = {
   "Warm neutral": { bg: "#f3eee5", surface: "#fffaf2", ink: "#28231e", accent: "#b86b45", secondary: "#d8bd91" },
@@ -21,15 +21,20 @@ const fonts = {
 
 export default function DesignCustomizer() {
   const [open, setOpen] = useState(false);
-  const [palette, setPalette] = useState("Warm neutral");
+  const [palette, setPalette] = useState("Original website");
   const [font, setFont] = useState("Keep original");
   const [radius, setRadius] = useState(18);
   const [shape, setShape] = useState("Rounded");
   const [density, setDensity] = useState("Comfortable");
-  const colors = useMemo(() => palettes[palette as keyof typeof palettes], [palette]);
+  const [hasApplied, setHasApplied] = useState(false);
+  const colors = useMemo(() => palettes[palette as keyof typeof palettes] ?? { bg: "#f3eee5", surface: "#fffaf2", ink: "#28231e", accent: "#b86b45", secondary: "#d8bd91" }, [palette]);
 
   useEffect(() => {
     const root = document.documentElement;
+    if (!hasApplied || palette === "Original website") {
+      ["--bg","--cream","--surface","--paper","--ink","--black","--accent","--orange","--brown","--gold","--tan","--line","--r","--custom-density","--custom-font"].forEach(key => root.style.removeProperty(key));
+      return;
+    }
     root.style.setProperty("--bg", colors.bg);
     root.style.setProperty("--cream", colors.bg);
     root.style.setProperty("--surface", colors.surface);
@@ -45,10 +50,10 @@ export default function DesignCustomizer() {
     root.style.setProperty("--r", shape === "Sharp" ? "2px" : shape === "Pill" ? "28px" : radius + "px");
     root.style.setProperty("--custom-density", density === "Compact" ? ".78" : density === "Spacious" ? "1.18" : "1");
     root.style.setProperty("--custom-font", fonts[font as keyof typeof fonts]);
-  }, [colors, radius, shape, density, font]);
+  }, [colors, radius, shape, density, font, hasApplied, palette]);
 
   function reset() {
-    setPalette("Warm neutral"); setFont("Keep original"); setRadius(18); setShape("Rounded"); setDensity("Comfortable");
+    setPalette("Original website"); setFont("Keep original"); setRadius(18); setShape("Rounded"); setDensity("Comfortable"); setHasApplied(false);
   }
 
   function sendBrief() {
@@ -72,10 +77,10 @@ export default function DesignCustomizer() {
       <aside className="design-panel" onClick={e => e.stopPropagation()} aria-label="Live website design customizer">
         <div className="design-head"><div><span className="design-kicker">LIVE PREVIEW</span><h2>Make it yours.</h2><p>Try a look and tell us what you prefer.</p></div><button className="design-close" onClick={() => setOpen(false)} aria-label="Close customizer"><X/></button></div>
         <label className="design-field">Color direction<select value={palette} onChange={e => setPalette(e.target.value)}>{Object.keys(palettes).map(x => <option key={x}>{x}</option>)}</select><span className="design-swatches">{Object.values(colors).map((c,i)=><i key={i} style={{background:c}} />)}</span></label>
-        <label className="design-field">Typography<select value={font} onChange={e => setFont(e.target.value)}>{Object.keys(fonts).map(x => <option key={x}>{x}</option>)}</select></label>
-        <div className="design-field"><span>Corner style</span><div className="design-options">{["Rounded","Sharp","Pill"].map(x=><button className={shape===x?"selected":""} key={x} onClick={()=>setShape(x)}>{x}</button>)}</div></div>
-        {shape === "Rounded" && <label className="design-field">Corner roundness <b>{radius}px</b><input type="range" min="4" max="32" value={radius} onChange={e=>setRadius(Number(e.target.value))}/></label>}
-        <div className="design-field"><span>Section spacing</span><div className="design-options">{["Compact","Comfortable","Spacious"].map(x=><button className={density===x?"selected":""} key={x} onClick={()=>setDensity(x)}>{x}</button>)}</div></div>
+        <label className="design-field">Typography<select value={font} onChange={e => { setFont(e.target.value); setHasApplied(true); }}>{Object.keys(fonts).map(x => <option key={x}>{x}</option>)}</select></label>
+        <div className="design-field"><span>Corner style</span><div className="design-options">{["Rounded","Sharp","Pill"].map(x=><button className={shape===x?"selected":""} key={x} onClick={()=>{setShape(x);setHasApplied(true)}}>{x}</button>)}</div></div>
+        {shape === "Rounded" && <label className="design-field">Corner roundness <b>{radius}px</b><input type="range" min="4" max="32" value={radius} onChange={e=>{setRadius(Number(e.target.value));setHasApplied(true)}}/></label>}
+        <div className="design-field"><span>Section spacing</span><div className="design-options">{["Compact","Comfortable","Spacious"].map(x=><button className={density===x?"selected":""} key={x} onClick={()=>{setDensity(x);setHasApplied(true)}}>{x}</button>)}</div></div>
         <div className="design-preview-note"><span className="design-dot"/> Changes are previewed on this page only. Your choices are not saved or published.</div>
         <div className="design-actions"><button className="design-reset" onClick={reset}><RotateCcw size={15}/> Reset</button><button className="design-send" onClick={sendBrief}><Send size={15}/> Send my preferences</button></div>
       </aside>
