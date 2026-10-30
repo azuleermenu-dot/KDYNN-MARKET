@@ -1,5 +1,7 @@
 "use client";
 
+import DesignCustomizer from "./DesignCustomizer";
+
 import { useState } from "react";
 import { ArrowRight, Clock3, MapPin, Menu, MessageCircle, Phone, Search, ShoppingBasket, Store, X } from "lucide-react";
 
@@ -48,6 +50,7 @@ export default function Home() {
       <section className="contact" id="contact"><div className="section-kicker">05 / CONTACT</div><div className="contact-grid"><div><h2>Have a question?<br/><em>Let's talk.</em></h2><p>For vendor inquiries, bulk orders, phone services or general questions, send us a message.</p><div className="contact-email"><MessageCircle size={19}/><span>azuleermenu@gmail.com</span></div></div><form onSubmit={submit}><div className="form-row"><label>Name<input name="name" required placeholder="Your name"/></label><label>Email<input name="email" type="email" required placeholder="you@email.com"/></label></div><div className="form-row"><label>Phone<input name="phone" placeholder="Your phone number"/></label><label>Subject<select name="subject" defaultValue="General Question"><option>General Question</option><option>Vendor Space</option><option>Wholesale / Bulk Order</option><option>Phone Repair / Tech Service</option></select></label></div><label>Message<textarea name="message" required rows={5} placeholder="How can we help?"/></label><button className="button dark submit" type="submit">Send inquiry <ArrowRight size={17}/></button>{sent && <p className="sent">Your email app should open with the inquiry ready to send.</p>}</form></div></section>
 
       <footer><a className="brand" href="#top">KDYNN<span>MARKET</span></a><p>Fresh goods · Local sellers · Community</p><small>© {new Date().getFullYear()} KDYNN Market. All rights reserved.</small></footer>
+    <DesignCustomizer />
     </main>
   );
 }
