@@ -31,11 +31,14 @@ export default function DesignCustomizer() {
 
   useEffect(() => {
     const root = document.documentElement;
-    if (!hasApplied || palette === "Original website") {
+    if (!hasApplied) {
       ["--bg","--cream","--surface","--paper","--ink","--black","--accent","--orange","--brown","--gold","--tan","--line","--r","--custom-density","--custom-font"].forEach(key => root.style.removeProperty(key));
       return;
     }
-    root.style.setProperty("--bg", colors.bg);
+    if (palette === "Original website") {
+      ["--bg","--cream","--surface","--paper","--ink","--black","--accent","--orange","--brown","--gold","--tan","--line"].forEach(key => root.style.removeProperty(key));
+    } else {
+      root.style.setProperty("--bg", colors.bg);
     root.style.setProperty("--cream", colors.bg);
     root.style.setProperty("--surface", colors.surface);
     root.style.setProperty("--paper", colors.surface);
@@ -47,6 +50,7 @@ export default function DesignCustomizer() {
     root.style.setProperty("--gold", colors.secondary);
     root.style.setProperty("--tan", colors.secondary);
     root.style.setProperty("--line", colors.ink + "22");
+    }
     root.style.setProperty("--r", shape === "Sharp" ? "2px" : shape === "Pill" ? "28px" : radius + "px");
     root.style.setProperty("--custom-density", density === "Compact" ? ".78" : density === "Spacious" ? "1.18" : "1");
     root.style.setProperty("--custom-font", fonts[font as keyof typeof fonts]);
@@ -88,11 +92,14 @@ export default function DesignCustomizer() {
     <style jsx global>{`
       html{font-family:var(--custom-font,inherit)}
       body{font-family:var(--custom-font,inherit)}
+      section{padding-top:calc(clamp(60px,9vw,130px)*var(--custom-density,1))!important;padding-bottom:calc(clamp(60px,9vw,130px)*var(--custom-density,1))!important}
+      .category,.dish-image,.image-frame,.story-image,.map-card,.drink,.feature-image,.photo-section{border-radius:var(--r,18px)}
       .design-launcher{position:fixed!important;z-index:80!important;right:22px!important;bottom:22px!important;display:flex!important;align-items:center!important;gap:9px!important;padding:13px 18px!important;border:1px solid rgba(255,255,255,.24)!important;border-radius:999px!important;background:#171717!important;color:#fff!important;box-shadow:0 10px 35px #0003!important;font:600 12px/1 Arial,sans-serif!important;cursor:pointer!important}
       .design-backdrop{position:fixed;z-index:1000;inset:0;background:#0008;display:flex;justify-content:flex-end;backdrop-filter:blur(4px)}
       .design-panel{width:min(430px,100%);height:100%;overflow:auto;background:#fbfaf7;color:#20201e;padding:30px;box-shadow:-15px 0 50px #0002;font:14px/1.5 Arial,sans-serif}
       .design-head{display:flex;justify-content:space-between;gap:20px;margin-bottom:28px}.design-kicker{font-size:10px;letter-spacing:.18em;font-weight:700;color:#987052}.design-head h2{font:600 32px/1.1 Georgia,serif;margin:8px 0}.design-head p{font-size:13px;color:#777;margin:0}.design-close{width:38px;height:38px;border:1px solid #ddd;border-radius:50%;background:transparent;display:grid;place-items:center;cursor:pointer}
       .design-field{display:block;margin:23px 0;color:#343434;font-size:12px;font-weight:700}.design-field select{display:block;width:100%;margin-top:9px;padding:12px;border:1px solid #ddd;border-radius:9px;background:white;color:#222;font:13px Arial,sans-serif}.design-swatches{display:flex;gap:7px;margin-top:10px}.design-swatches i{width:25px;height:25px;border-radius:50%;border:1px solid #0001}.design-options{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.design-options button{padding:9px 12px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#333;font:12px Arial,sans-serif;cursor:pointer}.design-options button.selected{background:#222;color:#fff;border-color:#222}.design-field input[type=range]{width:100%;margin-top:12px;accent-color:#222}.design-field b{float:right}.design-preview-note{padding:13px;background:#f0eee9;border-radius:10px;color:#68645e;font-size:11px;line-height:1.6}.design-dot{display:inline-block;width:7px;height:7px;background:#6a9b68;border-radius:50%;margin-right:7px}.design-actions{display:flex;gap:10px;margin-top:22px}.design-reset,.design-send{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:9px;font:600 12px Arial,sans-serif;cursor:pointer}.design-reset{background:#fff;border:1px solid #ddd;color:#333}.design-send{flex:1;background:#222;color:#fff;border:1px solid #222}
+      @media(max-width:800px){section{padding-top:calc(clamp(55px,16vw,100px)*var(--custom-density,1))!important;padding-bottom:calc(clamp(55px,16vw,100px)*var(--custom-density,1))!important}}
       @media(max-width:520px){.design-launcher{right:12px!important;bottom:12px!important;padding:12px 14px!important}.design-panel{padding:23px 20px}}
       @media(prefers-reduced-motion:reduce){.design-backdrop *{scroll-behavior:auto!important}}
     `}</style>
