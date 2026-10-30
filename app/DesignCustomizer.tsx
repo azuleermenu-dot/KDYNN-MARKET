@@ -42,6 +42,7 @@ export default function DesignCustomizer() {
     root.style.setProperty("--cream", colors.bg);
     root.style.setProperty("--surface", colors.surface);
     root.style.setProperty("--paper", colors.surface);
+    root.style.setProperty("--white", colors.surface);
     root.style.setProperty("--ink", colors.ink);
     root.style.setProperty("--black", colors.ink);
     root.style.setProperty("--accent", colors.accent);
@@ -93,7 +94,7 @@ export default function DesignCustomizer() {
       html{font-family:var(--custom-font,inherit)}
       body{font-family:var(--custom-font,inherit)}
       section{padding-top:calc(clamp(60px,9vw,130px)*var(--custom-density,1))!important;padding-bottom:calc(clamp(60px,9vw,130px)*var(--custom-density,1))!important}
-      .category,.dish-image,.image-frame,.story-image,.map-card,.drink,.feature-image,.photo-section{border-radius:var(--r,18px)}
+      .category,.dish-image,.image-frame,.story-image,.map-card,.drink,.feature-image,.photo-section,.button,.nav-cta,.solid-button,.outline-button{border-radius:var(--r,18px)}
       .design-launcher{position:fixed!important;z-index:80!important;right:22px!important;bottom:22px!important;display:flex!important;align-items:center!important;gap:9px!important;padding:13px 18px!important;border:1px solid rgba(255,255,255,.24)!important;border-radius:999px!important;background:#171717!important;color:#fff!important;box-shadow:0 10px 35px #0003!important;font:600 12px/1 Arial,sans-serif!important;cursor:pointer!important}
       .design-backdrop{position:fixed;z-index:1000;inset:0;background:#0008;display:flex;justify-content:flex-end;backdrop-filter:blur(4px)}
       .design-panel{width:min(430px,100%);height:100%;overflow:auto;background:#fbfaf7;color:#20201e;padding:30px;box-shadow:-15px 0 50px #0002;font:14px/1.5 Arial,sans-serif}
