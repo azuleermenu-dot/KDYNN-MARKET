@@ -149,6 +149,7 @@ export default function Home() {
     const threshold = start.pointerType === "mouse" ? 105 : 58;
 
     if (Math.abs(deltaX) < threshold || Math.abs(deltaX) < Math.abs(deltaY) * 1.3) return;
+    if (start.pointerType === "mouse" && window.getSelection()?.toString()) return;
     navigateTo(activePage + (deltaX < 0 ? 1 : -1));
   }
 
@@ -210,7 +211,7 @@ export default function Home() {
           <div
             className={pageClass(0)}
             ref={(node) => { pageRefs.current[0] = node; }}
-            aria-hidden={activePage !== 0}
+            aria-hidden={activePage !== 0} inert={activePage !== 0}
             aria-label="Welcome"
             role="group"
           >
@@ -243,7 +244,7 @@ export default function Home() {
           <div
             className={pageClass(1)}
             ref={(node) => { pageRefs.current[1] = node; }}
-            aria-hidden={activePage !== 1}
+            aria-hidden={activePage !== 1} inert={activePage !== 1}
             aria-label="Market overview"
             role="group"
           >
@@ -277,7 +278,7 @@ export default function Home() {
           <div
             className={pageClass(2)}
             ref={(node) => { pageRefs.current[2] = node; }}
-            aria-hidden={activePage !== 2}
+            aria-hidden={activePage !== 2} inert={activePage !== 2}
             aria-label="Interactive pwesto map"
             role="group"
           >
@@ -287,7 +288,7 @@ export default function Home() {
           <div
             className={pageClass(3)}
             ref={(node) => { pageRefs.current[3] = node; }}
-            aria-hidden={activePage !== 3}
+            aria-hidden={activePage !== 3} inert={activePage !== 3}
             aria-label="Market categories"
             role="group"
           >
@@ -331,7 +332,7 @@ export default function Home() {
           <div
             className={pageClass(4)}
             ref={(node) => { pageRefs.current[4] = node; }}
-            aria-hidden={activePage !== 4}
+            aria-hidden={activePage !== 4} inert={activePage !== 4}
             aria-label="Market community"
             role="group"
           >
@@ -354,7 +355,7 @@ export default function Home() {
           <div
             className={pageClass(5)}
             ref={(node) => { pageRefs.current[5] = node; }}
-            aria-hidden={activePage !== 5}
+            aria-hidden={activePage !== 5} inert={activePage !== 5}
             aria-label="Visit KDYNN Market"
             role="group"
           >
@@ -401,7 +402,7 @@ export default function Home() {
           <div
             className={pageClass(6)}
             ref={(node) => { pageRefs.current[6] = node; }}
-            aria-hidden={activePage !== 6}
+            aria-hidden={activePage !== 6} inert={activePage !== 6}
             aria-label="Contact KDYNN Market"
             role="group"
           >
