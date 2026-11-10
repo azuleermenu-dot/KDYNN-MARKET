@@ -331,7 +331,7 @@ function MarketScene({ selectedId, onSelect }: MarketSceneProps) {
         </div>
       )}
       <div className="market-scene-hint">Drag to rotate · Pinch or scroll to zoom · Tap a stall to inspect</div>
-      <button className="market-reset-view" type="button" onClick={resetView} aria-label="Reset 3D market view">
+      <button className="market-reset-view" type="button" onClick={resetView} aria-label="Reset 3D market view" disabled={sceneError} title={sceneError ? "3D view is unavailable on this device" : "Reset the 3D camera"}>
         <RotateCcw size={15} /> Reset view
       </button>
     </div>
@@ -353,6 +353,13 @@ export default function MarketExplorer() {
     const matchesStatus = statusFilter === "All" || stall.status === statusFilter;
     return matchesQuery && matchesCategory && matchesStatus;
   }), [query, category, statusFilter]);
+
+  useEffect(() => {
+    const selectionIsVisible = filteredStalls.some((stall) => stall.id === selectedId);
+    if (!selectionIsVisible && filteredStalls.length > 0) {
+      setSelectedId(filteredStalls[0].id);
+    }
+  }, [filteredStalls, selectedId]);
 
   const availableCount = stalls.filter((stall) => stall.status === "Available").length;
   const occupiedCount = stalls.filter((stall) => stall.status === "Occupied").length;
