@@ -193,6 +193,7 @@ function MarketScene({ selectedId, onSelect }: MarketSceneProps) {
       scene.add(group);
       groupMap.set(stall.id, group);
     });
+    groupsRef.current = groupMap;
 
     // Open-air frame: a simple visual reference, not a measured building shell.
     const pillarGeometry = new THREE.BoxGeometry(0.22, 3.05, 0.22);
