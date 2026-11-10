@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "KDYNN Market | San Jose del Monte",
-  description: "A modern community market for fresh goods, essentials, halal products, local vendors and phone services.",
+  description: "Explore KDYNN Market, discover local goods and use an interactive 3D concept map to browse provisional stall availability.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
